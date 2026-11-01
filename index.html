@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fluxo - A plataforma definitiva de gestão de projetos e tarefas para equipes remotas de alto rendimento. Entregue no prazo com transparência e autonomia.">
+  <title>Fluxo | Gestão de Projetos e Tarefas para Equipes Remotas</title>
+  
+  <!-- Tipografia: Plus Jakarta Sans via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Folha de Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== 1. HEADER FIXO ==================== -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#" class="brand-logo" aria-label="Fluxo - Página inicial">
+        <span class="logo-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </span>
+        <span class="logo-text">Fluxo</span>
+      </a>
+
+      <!-- Menu de Navegação Desktop -->
+      <nav class="nav-menu" id="navMenu" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#recursos" class="nav-link">Recursos</a></li>
+          <li class="nav-item"><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+          <li class="nav-item"><a href="#precos" class="nav-link">Preços</a></li>
+          <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+        <div class="nav-actions-mobile">
+          <a href="#precos" class="btn btn-primary btn-block">Começar grátis</a>
+        </div>
+      </nav>
+
+      <!-- Ações Desktop -->
+      <div class="header-actions">
+        <a href="#precos" class="btn btn-primary">Começar grátis</a>
+        <!-- Botão Hambúrguer Mobile -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMenu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 2. HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <!-- Coluna de Texto e Conversão -->
+        <div class="hero-content reveal">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Gestão assíncrona focada em resultados</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Entregue projetos no prazo sem reuniões intermináveis e mensagens perdidas.
+          </h1>
+          
+          <p class="hero-subtitle">
+            Centralize demandas, elimine ruídos de comunicação e dê autonomia real para seu time remoto produzir com consistência e foco total.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#precos" class="btn btn-primary btn-lg">Começar grátis</a>
+            <a href="#recursos" class="btn btn-secondary btn-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Ver demonstração
+            </a>
+          </div>
+
+          <div class="hero-trust-indicators">
+            <div class="trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>14 dias de teste grátis</span>
+            </div>
+            <div class="trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Sem necessidade de cartão</span>
+            </div>
+            <div class="trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Setup em menos de 2 minutos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Mockup do Produto (HTML/CSS Puro) -->
+        <div class="hero-visual reveal">
+          <div class="mockup-frame">
+            <!-- Barra Superior do Aplicativo -->
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="mockup-search-bar">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span>Buscar tarefas, sprints e membros...</span>
+              </div>
+              <div class="mockup-user-pill">
+                <span class="mockup-avatar avatar-primary">JV</span>
+                <span class="mockup-user-name">Sprint 24</span>
+              </div>
+            </div>
+
+            <!-- Corpo do Dashboard / Kanban -->
+            <div class="mockup-body">
+              <!-- Topo do Projeto -->
+              <div class="mockup-project-header">
+                <div>
+                  <h4 class="mockup-project-title">Lançamento Plataforma 3.0</h4>
+                  <p class="mockup-project-meta">18 tarefas ativas • 8 concluídas nesta semana</p>
+                </div>
+                <div class="mockup-progress-wrap">
+                  <div class="progress-info">
+                    <span>Progresso geral</span>
+                    <strong>84%</strong>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 84%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Colunas de Tarefas -->
+              <div class="mockup-columns">
+                <!-- Coluna 1: A Fazer -->
+                <div class="mockup-col">
+                  <div class="mockup-col-header">
+                    <span class="col-indicator col-gray"></span>
+                    <span class="col-title">Planejado</span>
+                    <span class="col-count">2</span>
+                  </div>
+                  <div class="mockup-task-card">
+                    <span class="task-tag tag-blue">Design System</span>
+                    <p class="task-title">Revisar componentes de acessibilidade</p>
+                    <div class="task-meta">
+                      <span class="task-due">28 Out</span>
+                      <span class="task-avatar avatar-sm">CA</span>
+                    </div>
+                  </div>
+                  <div class="mockup-task-card">
+                    <span class="task-tag tag-purple">Backend</span>
+                    <p class="task-title">Migrar webhook de pagamentos</p>
+                    <div class="task-meta">
+                      <span class="task-due">30 Out</span>
+                      <span class="task-avatar avatar-sm avatar-alt">LT</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Coluna 2: Em Execução -->
+                <div class="mockup-col">
+                  <div class="mockup-col-header">
+                    <span class="col-indicator col-emerald"></span>
+                    <span class="col-title">Em Execução</span>
+                    <span class="col-count">3</span>
+                  </div>
+                  <div class="mockup-task-card card-highlight">
+                    <span class="task-tag tag-emerald">Core Feature</span>
+                    <p class="task-title">Sincronização assíncrona de status</p>
+                    <div class="task-checklist">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>4 de 5 subetapas concluídas</span>
+                    </div>
+                    <div class="task-meta">
+                      <span class="task-due due-soon">Amanhã</span>
+                      <div class="task-team">
+                        <span class="task-avatar avatar-sm">RS</span>
+                        <span class="task-avatar avatar-sm avatar-alt2">MB</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Coluna 3: Concluído -->
+                <div class="mockup-col">
+                  <div class="mockup-col-header">
+                    <span class="col-indicator col-green"></span>
+                    <span class="col-title">Finalizado</span>
+                    <span class="col-count">5</span>
+                  </div>
+                  <div class="mockup-task-card card-done">
+                    <span class="task-tag tag-gray">Infraestrutura</span>
+                    <p class="task-title">Auditoria SOC2 e criptografia ponta a ponta</p>
+                    <div class="task-meta">
+                      <span class="task-status-done">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Concluído
+                      </span>
+                      <span class="task-avatar avatar-sm">FR</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Flutuante de Métrica -->
+            <div class="mockup-floating-stat">
+              <div class="floating-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+              <div class="floating-text">
+                <span class="stat-number">+42%</span>
+                <span class="stat-label">Velocidade de entrega da sprint</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. PROVA SOCIAL (LOGOS) ==================== -->
+    <section class="social-proof-strip" aria-label="Empresas que confiam no Fluxo">
+      <div class="container">
+        <p class="social-proof-lead">Mais de 1.200 equipes inovadoras organizam seus fluxos de trabalho conosco</p>
+        <div class="client-logos-grid">
+          <!-- Logo 1: Vektor -->
+          <div class="client-logo-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 22 22 22"></polygon>
+            </svg>
+            <span>Vektor Labs</span>
+          </div>
+
+          <!-- Logo 2: NexoTech -->
+          <div class="client-logo-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 12h8M12 8v8"></path>
+            </svg>
+            <span>NexoTech</span>
+          </div>
+
+          <!-- Logo 3: Lumina -->
+          <div class="client-logo-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Lumina Digital</span>
+          </div>
+
+          <!-- Logo 4: Altura Capital -->
+          <div class="client-logo-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            <span>Altura Partners</span>
+          </div>
+
+          <!-- Logo 5: Syncro -->
+          <div class="client-logo-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+            </svg>
+            <span>Syncro Global</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. SEÇÃO DE RECURSOS ==================== -->
+    <section class="features-section section-padding" id="recursos">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Produtividade Sem Fricção</span>
+          <h2 class="section-title">Construído para times que valorizam autonomia e entregas no prazo</h2>
+          <p class="section-description">
+            Substitua a dispersão de ferramentas genéricas por um sistema desenhado para dar clareza imediata sobre quem faz o quê e qual é o próximo passo.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card reveal">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Fluxos Visuais Sem Gargalos</h3>
+            <p class="feature-description">
+              Identifique bloqueios operacionais antes que eles se transformem em atrasos e mantenha prioridades transparentes para todos.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-card reveal">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Alinhamento Assíncrono</h3>
+            <p class="feature-description">
+              Poupe horas de reuniões de alinhamento com discussões contextuais organizadas diretamente na entrega de cada tarefa.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-card reveal">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Previsibilidade de Entregas</h3>
+            <p class="feature-description">
+              Monitore a capacidade real do time e antecipe prazos com relatórios automáticos de velocidade, sem microgerenciamento.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="feature-card reveal">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Rotinas Automatizadas</h3>
+            <p class="feature-description">
+              Elimine o trabalho burocrático transferindo status, notificando responsáveis e arquivando tarefas prontas no piloto automático.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. PROVA SOCIAL (DEPOIMENTOS) ==================== -->
+    <section class="testimonials-section section-padding bg-alt" id="depoimentos">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Histórias de Sucesso</span>
+          <h2 class="section-title">Resultados reais de quem gerencia equipes remotas todos os dias</h2>
+          <p class="section-description">
+            Veja como gestores e lideranças de operações utilizam o Fluxo para acelerar seus ciclos de desenvolvimento e manter a equipe engajada.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Depoimento 1 -->
+          <div class="testimonial-card reveal">
+            <div class="testimonial-rating" aria-label="Avaliação 5 estrelas">
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              "Reduzimos nosso tempo gasto em reuniões de status em 45% logo no primeiro mês. O time ganhou foco ininterrupto para programar e a liderança ganhou visibilidade total das entregas."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-mariana">MA</div>
+              <div class="author-info">
+                <h4 class="author-name">Mariana Albuquerque</h4>
+                <p class="author-role">Diretora de Operações na NexoTech</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Depoimento 2 -->
+          <div class="testimonial-card reveal">
+            <div class="testimonial-rating" aria-label="Avaliação 5 estrelas">
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              "Tentamos de tudo: Jira, ClickUp, Notion. O Fluxo foi a única ferramenta que os engenheiros e os designers adoraram usar desde o primeiro dia. Simples, rápido e incrivelmente direto."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-rodrigo">RC</div>
+              <div class="author-info">
+                <h4 class="author-name">Rodrigo Carvalho</h4>
+                <p class="author-role">Head de Produto na Vektor Labs</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Depoimento 3 -->
+          <div class="testimonial-card reveal">
+            <div class="testimonial-rating" aria-label="Avaliação 5 estrelas">
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+              <span class="star-icon">&#9733;</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              "Coordenar 28 especialistas remotos em quatro fusos horários era um pesadelo logístico. Com o Fluxo, eliminamos mal-entendidos e nosso índice de entrega no prazo subiu para 96%."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-camila">CS</div>
+              <div class="author-info">
+                <h4 class="author-name">Camila Siqueira</h4>
+                <p class="author-role">VP de Engenharia na Lumina Digital</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. SEÇÃO DE PREÇOS ==================== -->
+    <section class="pricing-section section-padding" id="precos">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Planos Transparentes</span>
+          <h2 class="section-title">Investimento previsível para escalar sua produtividade</h2>
+          <p class="section-description">
+            Sem taxas ocultas, sem contratos de fidelidade engessados. Teste por 14 dias sem compromisso.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Plano 1: Starter -->
+          <div class="pricing-card reveal">
+            <div class="pricing-header">
+              <h3 class="plan-name">Starter</h3>
+              <p class="plan-description">Para squads e equipes pequenas organizando seus primeiros fluxos formais.</p>
+              <div class="plan-price-wrap">
+                <span class="currency">R$</span>
+                <span class="amount">39</span>
+                <span class="period">/mês por usuário</span>
+              </div>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Até 10 membros na equipe</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Quadros Kanban e listas ilimitados</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Comunicação assíncrona por tarefa</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Integração com Slack e Google Calendar</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Armazenamento de 10 GB por projeto</span>
+              </li>
+            </ul>
+            <div class="pricing-footer">
+              <a href="#hero" class="btn btn-outline btn-block">Começar com Starter</a>
+            </div>
+          </div>
+
+          <!-- Plano 2: Pro (Destaque Mais Popular) -->
+          <div class="pricing-card pricing-card-featured reveal">
+            <div class="popular-badge">Mais Popular</div>
+            <div class="pricing-header">
+              <h3 class="plan-name">Pro</h3>
+              <p class="plan-description">Para operações que demandam automações avançadas e velocidade máxima de entrega.</p>
+              <div class="plan-price-wrap">
+                <span class="currency">R$</span>
+                <span class="amount">79</span>
+                <span class="period">/mês por usuário</span>
+              </div>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <strong>Membros ilimitados</strong>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Visões Kanban, Timeline (Gantt) e Calendário</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Automações avançadas sem limite</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Relatórios de capacidade e produtividade</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Integrações com GitHub, GitLab, Jira e Figma</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Suporte prioritário via chat em tempo real</span>
+              </li>
+            </ul>
+            <div class="pricing-footer">
+              <a href="#hero" class="btn btn-primary btn-block">Testar Pro Grátis</a>
+            </div>
+          </div>
+
+          <!-- Plano 3: Business -->
+          <div class="pricing-card reveal">
+            <div class="pricing-header">
+              <h3 class="plan-name">Business</h3>
+              <p class="plan-description">Para empresas consolidadas que exigem controle rigoroso, SSO e auditoria.</p>
+              <div class="plan-price-wrap">
+                <span class="currency">R$</span>
+                <span class="amount">149</span>
+                <span class="period">/mês por usuário</span>
+              </div>
+            </div>
+            <ul class="plan-features">
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Tudo incluso no plano Pro</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Single Sign-On (SAML / Okta / Azure AD)</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Permissões granulares e registros de auditoria</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>SLA de disponibilidade de 99.9% garantido</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Gerente de contas dedicado e treinamento VIP</span>
+              </li>
+            </ul>
+            <div class="pricing-footer">
+              <a href="#hero" class="btn btn-outline btn-block">Falar com Consultor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. SEÇÃO DE FAQ ==================== -->
+    <section class="faq-section section-padding bg-alt" id="faq">
+      <div class="container faq-container">
+        <div class="section-header text-center reveal">
+          <span class="section-tag">Dúvidas Frequentes</span>
+          <h2 class="section-title">Tudo o que você precisa saber antes de começar</h2>
+          <p class="section-description">
+            Respostas transparentes sobre cobrança, migração, segurança e termos do serviço.
+          </p>
+        </div>
+
+        <div class="faq-accordion reveal">
+          <!-- FAQ 1: Cobrança -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Como funciona o período de teste e a forma de cobrança?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Você pode usar o Fluxo gratuitamente por 14 dias com acesso a todas as funcionalidades do plano Pro. Não solicitamos dados de cartão de crédito no cadastro. Após os 14 dias, você escolhe se deseja assinar um plano pago via cartão corporativo ou boleto bancário mensal, sem nenhuma cobrança surpresa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2: Cancelamento -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Posso cancelar ou alterar meu plano a qualquer momento?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Sim. Nossos planos são mensais e não possuem fidelidade ou multas rescisórias. Você pode fazer upgrade, downgrade ou cancelar sua assinatura diretamente no painel de configurações a qualquer instante com apenas 2 cliques.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3: Integração -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Como o Fluxo se integra às ferramentas que minha equipe já utiliza?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  O Fluxo possui integrações nativas com Slack, Microsoft Teams, GitHub, GitLab, Figma, Google Drive e Notion. Além disso, disponibilizamos uma API REST pública e conexão via Zapier e Webhooks para conectar qualquer sistema interno do seu negócio.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4: Suporte -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Como funciona o suporte técnico para nossa equipe?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Todos os usuários contam com central de documentação completa em português e atendimento via ticket com resposta em menos de 4 horas úteis. Assinantes dos planos Pro e Business possuem atendimento humanizado prioritário via chat em tempo real dentro da própria plataforma.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5: Segurança -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Quais são os padrões de segurança e proteção de dados adotados?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Levamos conformidade a sério. Utilizamos criptografia TLS 1.3 em trânsito e AES-256 em repouso em servidores AWS com certificação SOC2 Tipo II e ISO 27001. Estamos 100% em conformidade com as diretrizes da LGPD e GDPR, garantindo sigilo absoluto dos arquivos e conversas do seu projeto.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. CTA FINAL ==================== -->
+    <section class="final-cta-section section-padding">
+      <div class="container">
+        <div class="final-cta-card reveal">
+          <div class="cta-inner-content">
+            <span class="section-tag">Comece Hoje Mesmo</span>
+            <h2 class="final-cta-title">
+              Pronto para transformar o ritmo e a clareza do seu time remoto?
+            </h2>
+            <p class="final-cta-subtitle">
+              Junte-se a mais de 1.200 empresas que reduziram reuniões exaustivas e passaram a entregar projetos com pontualidade e tranquilidade.
+            </p>
+            <div class="final-cta-buttons">
+              <a href="#precos" class="btn btn-primary btn-lg">Começar teste de 14 dias</a>
+            </div>
+            <div class="final-cta-guarantees">
+              <span>✓ Sem cartão de crédito</span>
+              <span class="bullet-separator">•</span>
+              <span>✓ Cancelamento descomplicado</span>
+              <span class="bullet-separator">•</span>
+              <span>✓ Suporte em português</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 8. FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Coluna da Marca -->
+        <div class="footer-brand-col">
+          <a href="#" class="brand-logo footer-logo">
+            <span class="logo-mark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </span>
+            <span class="logo-text">Fluxo</span>
+          </a>
+          <p class="footer-tagline">
+            A plataforma de gestão assíncrona desenhada para manter equipes remotas alinhadas, ágeis e produtivas.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" aria-label="LinkedIn do Fluxo" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter / X do Fluxo" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="GitHub do Fluxo" class="social-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna Produto -->
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Produto</h4>
+          <ul class="footer-nav">
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#precos">Preços e Planos</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#hero">Visão Geral</a></li>
+            <li><a href="#recursos">Automações</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna Empresa -->
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Empresa</h4>
+          <ul class="footer-nav">
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Carreiras <span class="footer-badge">Vagas abertas</span></a></li>
+            <li><a href="#">Blog de Produtividade</a></li>
+            <li><a href="#">Sala de Imprensa</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna Legal & Segurança -->
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Segurança & Legal</h4>
+          <ul class="footer-nav">
+            <li><a href="#">Termos de Serviço</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Conformidade LGPD</a></li>
+            <li><a href="#">Central de Confiança</a></li>
+            <li><a href="#">Status do Sistema</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Barra de Direitos Autorais -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Fluxo Tecnologia S.A. Todos os direitos reservados.</p>
+        <p class="footer-subtext">Feito com foco para equipes que valorizam entregas no prazo.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Principal -->
+  <script src="script.js"></script>
+</body>
+</html>
