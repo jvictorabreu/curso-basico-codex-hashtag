@@ -96,6 +96,57 @@
       color: var(--text-light);
     }
 
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-wrapper .form-input {
+      padding-right: 2.75rem;
+    }
+
+    .toggle-password-btn {
+      position: absolute;
+      right: 0.75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition-fast);
+    }
+
+    .toggle-password-btn:hover {
+      color: var(--emerald-600);
+    }
+
+    .toggle-password-btn svg {
+      pointer-events: none;
+    }
+
+    .form-error {
+      display: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #ef4444; /* Vermelho vibrante */
+      margin-top: 0.25rem;
+      line-height: 1.4;
+    }
+
+    .form-error.active {
+      display: block;
+    }
+
+    .form-input.input-error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+
     .form-checkbox-label {
       display: flex;
       align-items: flex-start;
@@ -189,11 +240,27 @@
         <div class="form-group">
           <label class="form-label" for="userEmail">E-mail corporativo ou pessoal</label>
           <input class="form-input" type="email" id="userEmail" name="email" placeholder="nome@empresa.com" required>
+          <span class="form-error" id="emailError"></span>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="userPassword">Senha</label>
-          <input class="form-input" type="password" id="userPassword" name="password" placeholder="Mínimo de 8 caracteres" minlength="8" required>
+          <div class="password-wrapper">
+            <input class="form-input" type="password" id="userPassword" name="password" placeholder="Mín. 8 caracteres, com maiúscula, minúscula, número e especial" minlength="8" required>
+            <button type="button" class="toggle-password-btn" id="togglePasswordBtn" aria-label="Mostrar ou ocultar senha">
+              <!-- Ícone de Olho Aberto -->
+              <svg id="eyeIconOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Ícone de Olho Cortado (inicialmente oculto) -->
+              <svg id="eyeIconClosed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="form-error" id="passwordError"></span>
         </div>
 
         <div class="form-group">
@@ -218,21 +285,132 @@
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('signupForm');
       const feedback = document.getElementById('signupFeedback');
+      const emailInput = document.getElementById('userEmail');
+      const passwordInput = document.getElementById('userPassword');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+      const eyeIconOpen = document.getElementById('eyeIconOpen');
+      const eyeIconClosed = document.getElementById('eyeIconClosed');
+
+      // Função de validação de e-mail em tempo real
+      const validateEmail = () => {
+        const email = emailInput.value.trim();
+        if (!email) {
+          emailError.textContent = '';
+          emailError.classList.remove('active');
+          emailInput.classList.remove('input-error');
+          return false;
+        }
+
+        if (!email.includes('@')) {
+          emailError.textContent = 'E-mail inválido: deve conter o caractere "@".';
+          emailError.classList.add('active');
+          emailInput.classList.add('input-error');
+          return false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          emailError.textContent = 'E-mail inválido: informe um e-mail completo (ex: nome@empresa.com).';
+          emailError.classList.add('active');
+          emailInput.classList.add('input-error');
+          return false;
+        } else {
+          emailError.textContent = '';
+          emailError.classList.remove('active');
+          emailInput.classList.remove('input-error');
+          return true;
+        }
+      };
+
+      // Função de validação de senha em tempo real
+      const validatePassword = () => {
+        const password = passwordInput.value;
+        if (!password) {
+          passwordError.innerHTML = '';
+          passwordError.classList.remove('active');
+          passwordInput.classList.remove('input-error');
+          return false;
+        }
+
+        const passwordIssues = [];
+        if (password.length < 8) passwordIssues.push('Mínimo de 8 caracteres');
+        if (!/[A-Z]/.test(password)) passwordIssues.push('Pelo menos uma letra maiúscula');
+        if (!/[a-z]/.test(password)) passwordIssues.push('Pelo menos uma letra minúscula');
+        if (!/[0-9]/.test(password)) passwordIssues.push('Pelo menos um número');
+        if (!/[^A-Za-z0-9]/.test(password)) passwordIssues.push('Pelo menos um caractere especial (ex: !@#$%&*.)');
+
+        if (passwordIssues.length > 0) {
+          passwordError.innerHTML = 'Senha não atende aos critérios:<br>• ' + passwordIssues.join('<br>• ');
+          passwordError.classList.add('active');
+          passwordInput.classList.add('input-error');
+          return false;
+        } else {
+          passwordError.innerHTML = '';
+          passwordError.classList.remove('active');
+          passwordInput.classList.remove('input-error');
+          return true;
+        }
+      };
+
+      // Validação interativa e dinâmica conforme o usuário digita (evento input)
+      emailInput.addEventListener('input', validateEmail);
+      passwordInput.addEventListener('input', validatePassword);
+
+      // Alternância de visibilidade da senha (olhinho)
+      if (togglePasswordBtn && passwordInput) {
+        togglePasswordBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.getAttribute('type') === 'password';
+          passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+          eyeIconOpen.style.display = isPassword ? 'none' : 'block';
+          eyeIconClosed.style.display = isPassword ? 'block' : 'none';
+        });
+      }
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('userName').value.trim();
-        const email = document.getElementById('userEmail').value.trim();
-        const password = document.getElementById('userPassword').value;
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
         const terms = document.getElementById('userTerms').checked;
 
-        if (!name || !email || !password) {
-          alert('Por favor, preencha todos os campos obrigatórios.');
+        let hasError = false;
+
+        // Reset de erros
+        emailError.textContent = '';
+        emailError.classList.remove('active');
+        emailInput.classList.remove('input-error');
+
+        passwordError.innerHTML = '';
+        passwordError.classList.remove('active');
+        passwordInput.classList.remove('input-error');
+
+        if (!name) {
+          alert('Por favor, informe seu nome completo.');
+          document.getElementById('userName').focus();
           return;
         }
 
-        if (password.length < 8) {
-          alert('A senha deve ter pelo menos 8 caracteres.');
+        // Executa as validações ao submeter
+        const isEmailValid = validateEmail();
+        if (!email) {
+          emailError.textContent = 'O e-mail é obrigatório.';
+          emailError.classList.add('active');
+          emailInput.classList.add('input-error');
+          hasError = true;
+        } else if (!isEmailValid) {
+          hasError = true;
+        }
+
+        const isPasswordValid = validatePassword();
+        if (!password) {
+          passwordError.innerHTML = 'A senha é obrigatória.';
+          passwordError.classList.add('active');
+          passwordInput.classList.add('input-error');
+          hasError = true;
+        } else if (!isPasswordValid) {
+          hasError = true;
+        }
+
+        if (hasError) {
           return;
         }
 
