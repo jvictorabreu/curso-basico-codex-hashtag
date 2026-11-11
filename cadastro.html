@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fluxo - Crie sua conta e comece a gerenciar projetos com seu time em poucos minutos.">
+  <title>Fluxo | Cadastro de Usuário</title>
+
+  <!-- Tipografia: Plus Jakarta Sans via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos dedicados da tela de cadastro mantendo o Design System */
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.07) 0%, transparent 60%), var(--bg-secondary);
+    }
+
+    .auth-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--header-height) + 2rem) 1.5rem 3rem 1.5rem;
+    }
+
+    .auth-card {
+      background: var(--bg-primary);
+      width: 100%;
+      max-width: 480px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2.25rem;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .auth-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background-color: var(--bg-primary);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--emerald-500);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-light);
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-wrapper .form-input {
+      padding-right: 2.75rem;
+    }
+
+    .toggle-password-btn {
+      position: absolute;
+      right: 0.75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition-fast);
+    }
+
+    .toggle-password-btn:hover {
+      color: var(--emerald-600);
+    }
+
+    .toggle-password-btn svg {
+      pointer-events: none;
+    }
+
+    .form-error {
+      display: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #ef4444; /* Vermelho vibrante */
+      margin-top: 0.25rem;
+      line-height: 1.4;
+    }
+
+    .form-error.active {
+      display: block;
+    }
+
+    .form-input.input-error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+
+    .form-checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-body);
+      cursor: pointer;
+      user-select: none;
+      line-height: 1.4;
+    }
+
+    .form-checkbox-label input {
+      margin-top: 0.2rem;
+      accent-color: var(--emerald-600);
+      cursor: pointer;
+    }
+
+    .form-checkbox-label a {
+      color: var(--emerald-600);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .auth-footer a {
+      color: var(--emerald-600);
+      font-weight: 600;
+    }
+
+    .auth-feedback {
+      display: none;
+      padding: 0.875rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .auth-feedback.success {
+      display: block;
+      background-color: var(--emerald-50);
+      color: var(--emerald-800);
+      border: 1px solid var(--emerald-200);
+    }
+  </style>
+</head>
+<body class="auth-wrapper">
+
+  <!-- Header Simples -->
+  <header class="site-header scrolled">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Fluxo - Voltar para início">
+        <span class="logo-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </span>
+        <span class="logo-text">Fluxo</span>
+      </a>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-secondary">← Voltar ao início</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo de Cadastro -->
+  <main class="auth-main">
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="section-tag">Comece gratuitamente</span>
+        <h1 class="auth-title">Crie sua conta</h1>
+        <p class="auth-subtitle">14 dias de teste grátis sem necessidade de cartão de crédito.</p>
+      </div>
+
+      <div id="signupFeedback" class="auth-feedback"></div>
+
+      <form id="signupForm" class="auth-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="userName">Nome completo</label>
+          <input class="form-input" type="text" id="userName" name="name" placeholder="Ex: Maria Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="userEmail">E-mail corporativo ou pessoal</label>
+          <input class="form-input" type="email" id="userEmail" name="email" placeholder="nome@empresa.com" required>
+          <span class="form-error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="userPassword">Senha</label>
+          <div class="password-wrapper">
+            <input class="form-input" type="password" id="userPassword" name="password" placeholder="Mín. 8 caracteres, com maiúscula, minúscula, número e especial" minlength="8" required>
+            <button type="button" class="toggle-password-btn" id="togglePasswordBtn" aria-label="Mostrar ou ocultar senha">
+              <!-- Ícone de Olho Aberto -->
+              <svg id="eyeIconOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Ícone de Olho Cortado (inicialmente oculto) -->
+              <svg id="eyeIconClosed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="form-error" id="passwordError"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-checkbox-label">
+            <input type="checkbox" id="userTerms" required>
+            <span>Concordo com os <a href="#">Termos de Serviço</a> e a <a href="#">Política de Privacidade</a>.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">
+          Criar minha conta
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Já tem uma conta? <a href="#">Entrar</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('signupForm');
+      const feedback = document.getElementById('signupFeedback');
+      const emailInput = document.getElementById('userEmail');
+      const passwordInput = document.getElementById('userPassword');
+      const emailError = document.getElementById('emailError');
+      const passwordError = document.getElementById('passwordError');
+      const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+      const eyeIconOpen = document.getElementById('eyeIconOpen');
+      const eyeIconClosed = document.getElementById('eyeIconClosed');
+
+      // Função de validação de e-mail em tempo real
+      const validateEmail = () => {
+        const email = emailInput.value.trim();
+        if (!email) {
+          emailError.textContent = '';
+          emailError.classList.remove('active');
+          emailInput.classList.remove('input-error');
+          return false;
+        }
+
+        if (!email.includes('@')) {
+          emailError.textContent = 'E-mail inválido: deve conter o caractere "@".';
+          emailError.classList.add('active');
+          emailInput.classList.add('input-error');
+          return false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          emailError.textContent = 'E-mail inválido: informe um e-mail completo (ex: nome@empresa.com).';
+          emailError.classList.add('active');
+          emailInput.classList.add('input-error');
+          return false;
+        } else {
+          emailError.textContent = '';
+          emailError.classList.remove('active');
+          emailInput.classList.remove('input-error');
+          return true;
+        }
+      };
+
+      // Função de validação de senha em tempo real
+      const validatePassword = () => {
+        const password = passwordInput.value;
+        if (!password) {
+          passwordError.innerHTML = '';
+          passwordError.classList.remove('active');
+          passwordInput.classList.remove('input-error');
+          return false;
+        }
+
+        const passwordIssues = [];
+        if (password.length < 8) passwordIssues.push('Mínimo de 8 caracteres');
+        if (!/[A-Z]/.test(password)) passwordIssues.push('Pelo menos uma letra maiúscula');
+        if (!/[a-z]/.test(password)) passwordIssues.push('Pelo menos uma letra minúscula');
+        if (!/[0-9]/.test(password)) passwordIssues.push('Pelo menos um número');
+        if (!/[^A-Za-z0-9]/.test(password)) passwordIssues.push('Pelo menos um caractere especial (ex: !@#$%&*.)');
+
+        if (passwordIssues.length > 0) {
+          passwordError.innerHTML = 'Senha não atende aos critérios:<br>• ' + passwordIssues.join('<br>• ');
+          passwordError.classList.add('active');
+          passwordInput.classList.add('input-error');
+          return false;
+        } else {
+          passwordError.innerHTML = '';
+          passwordError.classList.remove('active');
+          passwordInput.classList.remove('input-error');
+          return true;
+        }
+      };
+
+      // Validação interativa e dinâmica conforme o usuário digita (evento input)
+      emailInput.addEventListener('input', validateEmail);
+      passwordInput.addEventListener('input', validatePassword);
+
+      // Alternância de visibilidade da senha (olhinho)
+      if (togglePasswordBtn && passwordInput) {
+        togglePasswordBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.getAttribute('type') === 'password';
+          passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+          eyeIconOpen.style.display = isPassword ? 'none' : 'block';
+          eyeIconClosed.style.display = isPassword ? 'block' : 'none';
+        });
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('userName').value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const terms = document.getElementById('userTerms').checked;
+
+        let hasError = false;
+
+        // Reset de erros
+        emailError.textContent = '';
+        emailError.classList.remove('active');
+        emailInput.classList.remove('input-error');
+
+        passwordError.innerHTML = '';
+        passwordError.classList.remove('active');
+        passwordInput.classList.remove('input-error');
+
+        if (!name) {
+          alert('Por favor, informe seu nome completo.');
+          document.getElementById('userName').focus();
+          return;
+        }
+
+        // Executa as validações ao submeter
+        const isEmailValid = validateEmail();
+        if (!email) {
+          emailError.textContent = 'O e-mail é obrigatório.';
+          emailError.classList.add('active');
+          emailInput.classList.add('input-error');
+          hasError = true;
+        } else if (!isEmailValid) {
+          hasError = true;
+        }
+
+        const isPasswordValid = validatePassword();
+        if (!password) {
+          passwordError.innerHTML = 'A senha é obrigatória.';
+          passwordError.classList.add('active');
+          passwordInput.classList.add('input-error');
+          hasError = true;
+        } else if (!isPasswordValid) {
+          hasError = true;
+        }
+
+        if (hasError) {
+          return;
+        }
+
+        if (!terms) {
+          alert('Você deve aceitar os termos de serviço para prosseguir.');
+          return;
+        }
+
+        feedback.className = 'auth-feedback success';
+        feedback.textContent = `Conta criada com sucesso para ${name}! Redirecionando...`;
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
